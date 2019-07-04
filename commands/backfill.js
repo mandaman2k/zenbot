@@ -78,6 +78,7 @@ module.exports = function (program, conf) {
         var opts = {product_id: selector.product_id}
         if (mode === 'backward') {
           opts.to = marker.from
+          opts.trade_id = marker.trade_id
         }
         else {
           if (marker.to) opts.from = marker.to + 1
@@ -171,7 +172,7 @@ module.exports = function (program, conf) {
             console.log('\nskipping ' + diff + ' hrs of previously collected data')
           }
           resume_markers.save(marker)
-            .then(setupNext)
+            .then(marker.selector.includes('bitso') ? setTimeout(setupNext,1001): setupNext)
             .catch(function(err){
               if (err) throw err
             })
@@ -224,12 +225,14 @@ module.exports = function (program, conf) {
           }
           marker.from = marker.from ? Math.min(marker.from, cursor) : cursor
           marker.oldest_time = Math.min(marker.oldest_time, trade.time)
+          marker.trade_id = trade.trade_id
         }
         else {
           if (!marker.from) {
             marker.from = cursor
             marker.oldest_time = trade.time
             marker.newest_time = trade.time
+            marker.trade_id = trade.trade_id
           }
           marker.to = marker.to ? Math.max(marker.to, cursor) : cursor
           marker.newest_time = Math.max(marker.newest_time, trade.time)
