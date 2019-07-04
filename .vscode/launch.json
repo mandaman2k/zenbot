@@ -1,0 +1,44 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "sim",
+            "program": "${workspaceFolder}/zenbot.js",
+            "args": ["sim", "binance.PHB-BTC"]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "paper",
+            "program": "${workspaceFolder}/zenbot.js",
+            "args": ["trade", "--paper", "--order_type", "taker", "--currency_capital", "8624.53", "--asset_capital", "0.14314661"]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "backfill",
+            "program": "${workspaceFolder}/zenbot.js",
+            "args": ["backfill", "poloniex.BTC-USDT", "--days", "14"]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "backfill bitso",
+            "program": "${workspaceFolder}/zenbot.js",
+            "args": ["backfill", "bitso.BTC-MXN", "--days", "14"]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "balance",
+            "program": "${workspaceFolder}/zenbot.js",
+            "args": ["balance"]
+        },
+    ]
+}

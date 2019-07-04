@@ -33,6 +33,7 @@
     "babel-loader": "^8.0.4",
     "babel-preset-env": "^1.6.1",
     "bitfinex-api-node": "^2.0.0",
+    "bitso-api": "github:mandaman2k/bitsoapi",
     "bitstamp": "^1.0.4",
     "bl": "^3.0.0",
     "bollinger-bands": "^3.0.1",
